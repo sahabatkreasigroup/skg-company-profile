@@ -355,10 +355,16 @@ section { padding: 88px 0; }
 /* Kategori produk preview */
 .cat-card { padding: 0; overflow: hidden; }
 .cat-card-visual {
-  height: 150px;
+  height: 220px;
   background: linear-gradient(135deg, var(--blue-1), var(--bg2));
   display: flex; align-items: center; justify-content: center;
   font-size: 40px; color: var(--blue-4);
+  overflow: hidden;
+}
+.cat-card-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block;
 }
 .cat-card-body { padding: 22px; }
 .cat-card-body h3 { margin-bottom: 6px; }
@@ -396,15 +402,33 @@ section { padding: 88px 0; }
 .page-hero p.lead { max-width: 560px; }
 
 /* Legalitas badge */
-.legal-badges { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 22px; }
+.legal-badges { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
 .legal-badge {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--card2); border: 1px solid var(--border);
-  border-radius: 12px; padding: 12px 16px; font-size: 13px;
+  display: flex; align-items: center; gap: 14px;
+  background: var(--card); border: 1px solid var(--border);
+  border-left: 3px solid var(--legal-accent, var(--blue-5));
+  border-radius: 12px; padding: 14px 18px; font-size: 13px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease;
 }
-.legal-badge i { color: var(--green); font-size: 18px; }
-.legal-badge strong { display: block; font-size: 13px; }
-.legal-badge span { color: var(--text3); font-size: 11.5px; }
+.legal-badge:hover { transform: translateX(2px); box-shadow: var(--shadow-md); }
+.legal-badge .legal-icon {
+  flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--legal-accent-lt, var(--blue-1));
+  color: var(--legal-accent, var(--blue-5));
+  font-size: 19px;
+}
+.legal-badge strong { display: block; font-size: 13.5px; color: var(--text); }
+.legal-badge span { color: var(--text3); font-size: 12px; }
+.legal-badge.is-teal { --legal-accent: var(--teal); --legal-accent-lt: var(--teal-lt); }
+.legal-badge.is-green { --legal-accent: var(--green); --legal-accent-lt: var(--green-lt); }
+.legal-badge.is-blue { --legal-accent: var(--blue-5); --legal-accent-lt: var(--blue-1); }
+
+@media (min-width: 640px) {
+  .legal-badges { flex-direction: row; flex-wrap: wrap; }
+  .legal-badge { flex: 1 1 auto; }
+}
 
 /* Timeline perjalanan */
 .timeline { display: flex; flex-direction: column; gap: 0; max-width: 640px; margin: 0 auto; }
@@ -439,6 +463,12 @@ section { padding: 88px 0; }
   background: linear-gradient(135deg, var(--blue-1), var(--bg2));
   display: flex; align-items: center; justify-content: center;
   font-size: 64px; color: var(--blue-4); min-height: 220px;
+  overflow: hidden;
+}
+.product-detail-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block;
 }
 .product-detail-body { padding: 32px; display: flex; flex-direction: column; justify-content: center; }
 .product-detail-body h3 { font-size: 21px; margin-bottom: 10px; }
