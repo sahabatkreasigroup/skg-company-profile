@@ -282,11 +282,27 @@ section { padding: 88px 0; }
   aspect-ratio: 1 / 0.92;
   background: linear-gradient(155deg, var(--blue-1) 0%, var(--bg2) 100%);
   border-radius: 28px;
-  border: 1px solid var(--border);
+  box-shadow: 0 30px 60px -20px rgba(20, 60, 130, 0.25);
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
 .hero-visual .rack-illustration { width: 72%; }
+.hero-visual .hero-photo {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  pointer-events: none;
+  background:
+    linear-gradient(155deg, rgba(37,99,235,0.16) 0%, rgba(37,99,235,0) 35%),
+    linear-gradient(0deg, rgba(15,32,64,0.55) 0%, rgba(15,32,64,0) 42%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+}
 
 /* rak renteng ilustrasi sederhana (SVG inline via CSS shapes) */
 .rack {
@@ -301,7 +317,9 @@ section { padding: 88px 0; }
 
 .hero-badge {
   position: absolute; bottom: 20px; left: 20px;
-  background: #fff; border-radius: 16px; box-shadow: var(--shadow-lg);
+  z-index: 2;
+  background: rgba(255,255,255,0.96); border-radius: 16px; box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(4px);
   padding: 14px 18px; display: flex; align-items: center; gap: 12px;
   font-size: 13px; font-weight: 700; color: var(--text);
 }
